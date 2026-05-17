@@ -13,7 +13,6 @@ jobs:
 
       - name: Deploy web/ to Hetzner
         env:
-          # Concatena tutti i nomi comuni — quello impostato porta il suo valore, gli altri sono stringa vuota
           KEY:  "${{ secrets.SSH_PRIVATE_KEY }}${{ secrets.SSH_KEY }}${{ secrets.HETZNER_SSH_KEY }}${{ secrets.DEPLOY_KEY }}${{ secrets.SERVER_SSH_KEY }}"
           HOST: "${{ secrets.SSH_HOST }}${{ secrets.HETZNER_HOST }}${{ secrets.SERVER_HOST }}${{ secrets.HOST }}${{ secrets.SERVER_IP }}${{ secrets.HETZNER_IP }}"
           USER: "${{ secrets.SSH_USER }}${{ secrets.HETZNER_USER }}${{ secrets.SERVER_USER }}${{ secrets.DEPLOY_USER }}${{ secrets.REMOTE_USER }}"
@@ -24,10 +23,10 @@ jobs:
           DEST="${DEST:-/var/www/html/radiobt}"
 
           if [ -z "$KEY" ] || [ -z "$HOST" ] || [ -z "$USER" ]; then
-            echo "ERROR: impossibile trovare KEY, HOST o USER nei secret."
-            echo "Imposta almeno uno di: SSH_PRIVATE_KEY / SSH_KEY / HETZNER_SSH_KEY"
-            echo "                       SSH_HOST / HETZNER_HOST / SERVER_IP"
-            echo "                       SSH_USER / HETZNER_USER / DEPLOY_USER"
+            echo "ERROR: secret mancante."
+            echo "Chiave vuota: $([ -z "$KEY" ] && echo 'SI' || echo 'no')"
+            echo "Host vuoto:   $([ -z "$HOST" ] && echo 'SI' || echo 'no')"
+            echo "User vuoto:   $([ -z "$USER" ] && echo 'SI' || echo 'no')"
             exit 1
           fi
 
@@ -37,7 +36,8 @@ jobs:
           ssh-keyscan -p "$PORT" -H "$HOST" >> ~/.ssh/known_hosts 2>/dev/null
 
           ssh -i ~/.ssh/id_rsa -p "$PORT" "$USER@$HOST" "mkdir -p $DEST"
-          rsync -avz --delete -e "ssh -i ~/.ssh/id_rsa -p $PORT -o StrictHostKeyChecking=no" \
+          rsync -avz --delete \
+            -e "ssh -i ~/.ssh/id_rsa -p $PORT -o StrictHostKeyChecking=no" \
             web/ "$USER@$HOST:$DEST/"
 
           echo "✓ Deployed to $USER@$HOST:$DEST"
