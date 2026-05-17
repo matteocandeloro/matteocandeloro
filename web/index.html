@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RadioBT – Musica Bluetooth per Auto</title>
+  <style>
+    :root{--bg:#000;--surface:#0d0d0d;--surface2:#1a1a1a;--border:#2a2a2a;--primary:#bb86fc;--text:#e6e1e5;--muted:#8a8a8a;--radius:16px}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;line-height:1.6}
+    .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 24px;background:radial-gradient(ellipse at 50% 0%,rgba(187,134,252,.18) 0%,transparent 65%)}
+    .app-icon{width:120px;height:120px;border-radius:28px;background:linear-gradient(135deg,#1e1e2e,#2d1b69);display:flex;align-items:center;justify-content:center;margin-bottom:28px;box-shadow:0 20px 60px rgba(187,134,252,.35)}
+    .app-icon svg{width:60px;height:60px}
+    h1{font-size:clamp(2.4rem,6vw,4rem);font-weight:700;letter-spacing:-1px;background:linear-gradient(135deg,#fff 40%,var(--primary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px}
+    .tagline{font-size:1.15rem;color:var(--muted);max-width:480px;margin-bottom:40px}
+    .btn-download{display:inline-flex;align-items:center;gap:12px;padding:18px 40px;border-radius:100px;background:var(--primary);color:#000;font-size:1.05rem;font-weight:700;text-decoration:none;transition:transform .15s,box-shadow .15s;box-shadow:0 8px 32px rgba(187,134,252,.4)}
+    .btn-download:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(187,134,252,.55)}
+    .btn-download svg{width:22px;height:22px}
+    .version-badge{margin-top:14px;font-size:.82rem;color:var(--muted)}
+    section{max-width:960px;margin:0 auto;padding:80px 24px}
+    section h2{font-size:1.8rem;font-weight:700;margin-bottom:40px;text-align:center}
+    .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+    .feature-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px;transition:border-color .2s}
+    .feature-card:hover{border-color:var(--primary)}
+    .feature-icon{width:48px;height:48px;border-radius:12px;background:var(--surface2);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+    .feature-icon svg{width:24px;height:24px}
+    .feature-card h3{font-size:1rem;font-weight:600;margin-bottom:6px}
+    .feature-card p{font-size:.875rem;color:var(--muted)}
+    .steps{list-style:none}
+    .steps li{display:flex;align-items:flex-start;gap:18px;padding:20px 0;border-bottom:1px solid var(--border)}
+    .steps li:last-child{border-bottom:none}
+    .step-num{flex-shrink:0;width:36px;height:36px;border-radius:50%;background:var(--primary);color:#000;font-weight:700;font-size:.9rem;display:flex;align-items:center;justify-content:center}
+    .step-text h4{font-size:.95rem;font-weight:600;margin-bottom:3px}
+    .step-text p{font-size:.855rem;color:var(--muted)}
+    footer{text-align:center;padding:40px 24px;border-top:1px solid var(--border);color:var(--muted);font-size:.82rem}
+    footer a{color:var(--primary);text-decoration:none}
+    .divider{height:1px;background:var(--border);max-width:960px;margin:0 auto}
+  </style>
+</head>
+<body>
+<div class="hero">
+  <div class="app-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z" fill="#bb86fc"/></svg></div>
+  <h1>RadioBT</h1>
+  <p class="tagline">Il lettore musicale che parla la lingua della tua autoradio.<br>Bluetooth A2DP + AVRCP: copertina, artista, album e traccia direttamente sul display della radio.</p>
+  <a class="btn-download" href="RadioBT.apk" download>
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 20h14v-2H5v2zm7-18L5.33 9h4.34v6h4.66V9h4.34L12 2z"/></svg>
+    Scarica APK
+  </a>
+  <p class="version-badge">v1.0.0 · Android 5.0+ · ~8 MB</p>
+</div>
+<section>
+  <h2>Tutto quello che ti serve, e niente di più</h2>
+  <div class="features">
+    <div class="feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="#bb86fc"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg></div><h3>AVRCP Metadata</h3><p>Titolo, artista, album, numero traccia e durata inviati alla radio via protocollo Bluetooth standard.</p></div>
+    <div class="feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="#90caf9"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></div><h3>Libreria locale</h3><p>Legge tutti i file audio sul telefono. Nessun abbonamento, nessun cloud.</p></div>
+    <div class="feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="#bb86fc"><path d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69z"/></svg></div><h3>Tema AMOLED Nero</h3><p>Interfaccia sempre scura, sfondo nero puro per risparmiare batteria sui display OLED.</p></div>
+    <div class="feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="#90caf9"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1z"/></svg></div><h3>Luminosità regolabile</h3><p>Slider dedicato per abbassare la luminosità di notte senza uscire dall'app.</p></div>
+    <div class="feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="#bb86fc"><path d="M12 3a9 9 0 1 0 0 18A9 9 0 0 0 12 3zm.5 13H11v-6h1.5v6zm0-8H11V6.5h1.5V8z"/></svg></div><h3>Spegni lo schermo</h3><p>Un tap spegne il display mantenendo musica e BT attivi. Altro tap per riaccenderlo.</p></div>
+    <div class="feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="#90caf9"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg></div><h3>Cover Art grande</h3><p>Copertina a tutto schermo con blur dinamico e animazione scala play/pause.</p></div>
+  </div>
+</section>
+<div class="divider"></div>
+<section>
+  <h2>Come installare</h2>
+  <ul class="steps">
+    <li><div class="step-num">1</div><div class="step-text"><h4>Scarica l'APK</h4><p>Clicca "Scarica APK" in cima alla pagina dal telefono Android.</p></div></li>
+    <li><div class="step-num">2</div><div class="step-text"><h4>Abilita origini sconosciute</h4><p><strong>Impostazioni → Sicurezza → Origini sconosciute</strong> (su Android 8+ “Installa app sconosciute”) e abilita per il browser usato.</p></div></li>
+    <li><div class="step-num">3</div><div class="step-text"><h4>Apri il file APK</h4><p>Dalla notifica di download o da <strong>Gestione file → Download</strong>, segui le istruzioni di installazione.</p></div></li>
+    <li><div class="step-num">4</div><div class="step-text"><h4>Collega via Bluetooth</h4><p>Abbina il telefono all'autoradio, avvia RadioBT e seleziona un brano: la radio riceve copertina, titolo, artista e album.</p></div></li>
+  </ul>
+</section>
+<div class="divider"></div>
+<footer>
+  <p>RadioBT &copy; 2025 — <a href="https://github.com/matteocandeloro">Matteo Candeloro</a></p>
+  <p style="margin-top:6px">Android 5.0+ · Nessuna connessione internet necessaria</p>
+</footer>
+</body>
+</html>
