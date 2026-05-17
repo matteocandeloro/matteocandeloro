@@ -1,5 +1,6 @@
 package com.matteocandeloro.radiobt.ui
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -36,6 +37,9 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import coil.compose.AsyncImagePainter
+import coil.compose.SubcomposeAsyncImage
+import coil.compose.SubcomposeAsyncImageContent
 import com.matteocandeloro.radiobt.PlayerUiState
 import com.matteocandeloro.radiobt.PlayerViewModel
 import com.matteocandeloro.radiobt.Track
@@ -115,29 +119,29 @@ private fun TrackRow(
             .padding(horizontal = 16.dp, vertical = 8.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        AsyncImage(
+        SubcomposeAsyncImage(
             model = track.albumArtUri,
             contentDescription = "Album art for ${track.album}",
             modifier = Modifier
                 .size(48.dp)
                 .clip(RoundedCornerShape(4.dp)),
-            contentScale = ContentScale.Crop,
-            error = null,
-            fallback = null,
-            placeholder = null
-        ).also {
-            if (track.albumArtUri == null) {
+            contentScale = ContentScale.Crop
+        ) {
+            val state = painter.state
+            if (state is AsyncImagePainter.State.Success) {
+                SubcomposeAsyncImageContent()
+            } else {
                 Box(
                     modifier = Modifier
-                        .size(48.dp)
-                        .clip(RoundedCornerShape(4.dp)),
+                        .fillMaxSize()
+                        .background(MaterialTheme.colorScheme.surfaceVariant),
                     contentAlignment = Alignment.Center
                 ) {
                     Icon(
                         imageVector = Icons.Default.MusicNote,
                         contentDescription = null,
                         tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                        modifier = Modifier.size(32.dp)
+                        modifier = Modifier.size(28.dp)
                     )
                 }
             }
