@@ -14,7 +14,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.RadioBT">
+        android:theme="@style/Theme.RadioBT"
+        android:windowSoftInputMode="adjustResize">
 
         <activity
             android:name=".MainActivity"
